@@ -19,24 +19,17 @@ public class TranslationServer{
         Socket client = serverSocket.accept();
         BufferedReader InputBuffer = new BufferedReader(new InputStreamReader(
                 client.getInputStream()));
-        while(true) {
-          try {
-            String country = InputBuffer.readLine();
-            while(true) {
-              try {
-                String phrase = InputBuffer.readLine();
-                //TRANSLATION CODE HERE
-                String translation = country + phrase;
-                //TRANSLATION CODE
-                PrintWriter pw = new PrintWriter(client.getOutputStream());
-                pw.write(translation);
-                client.close();
-              } catch (IOException e){}
-            }
-          } catch (IOException e){}
+        String country = InputBuffer.readLine();
+        if (country.length() == 2) {
+          String phrase = InputBuffer.readLine();
+          //TRANSLATION CODE HERE
+          String translation = country + phrase;
+          //TRANSLATION CODE
+          PrintWriter pw = new PrintWriter(client.getOutputStream());
+          pw.write(translation);
         }
-      }
-      catch (IOException e) {
+        client.close();
+      } catch (IOException e) {
         System.out.println(e);
       }
     }
