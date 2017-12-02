@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>I am a:</h3>
+
+<form>
+  <input type="radio" name="gender" value="Man" checked> Man<br>
+  <input type="radio" name="gender" value="Woman"> Woman<br>
+  <input type="radio" name="gender" value="Snowflake"> Snowflake
+</form>
+
+<h3>Looking for:</h3>
+
+<form>
+  <input type="radio" name="gender" value="Men" checked> Men<br>
+  <input type="radio" name="gender" value="Women"> Women<br>
+  <input type="radio" name="gender" value="Snowflakes"> Snowflakes
+</form>
+
+<p></p>
+
+<button onclick="submit()">Submit</button>
+
+<script>
+function submit() {
+    var x = document.getElementById("myRadio");
+    x.checked = false;
+}
+</script>
+
+</body>
+</html>
+
