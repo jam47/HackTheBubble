@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jVectorMap demo</title>
+  <link rel="stylesheet" href="jquery-jvectormap-2.0.3.css" type="text/css" media="screen"/>
+  <script src="jquery-3.2.1.min.js"></script>
+  <script src="jquery-jvectormap-2.0.3.min.js"></script>
+  <script src="jquery-jvectormap-world-mill.js"></script>
+</head>
+<body>
+  <div id="world-map" style="width: 1920px; height: 1080px"></div>
+  <script>
+    $(function(){
+      $('#world-map').vectorMap({map: 'world_mill'});
+    });
+  </script>
+
+  <script language="javascript">
+    var net = require('net');
+
+    var server = net.createServer(function(socket) {
+      socket.write('Echo server\r\n');
+      socket.pipe(socket);
+    });
+
+    server.listen(8080, '127.0.0.1');
+
+    var net = require('net');
+
+    var client = new net.Socket();
+    client.connect(8080, '127.0.0.1', function() {
+      console.log('Connected');
+      client.write("fr");
+      client.write("Hello");
+    });
+
+    client.on('data', function(data) {
+      console.log('Received: ' + data);
+      client.destroy(); // kill client after server's response
+    });
+
+    client.on('close', function() {
+      console.log('Connection closed');
+    });
+
+  </script>
+
+</body>
+</html>
